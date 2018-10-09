@@ -116,7 +116,7 @@ retry:
 	clock_gettime(CLOCK_REALTIME, &ts);
 	
 	printf(	"%lld.%.9ld,"
-		"%ld.%09ld",
+		"%ld.%09ld\n",
 		(long long)ts.tv_sec, 
 		ts.tv_nsec,
 		infobuf.assert_timestamp.tv_sec,
