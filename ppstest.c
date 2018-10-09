@@ -115,18 +115,12 @@ retry:
 
 	clock_gettime(CLOCK_REALTIME, &ts);
 	
-	printf(	"local-timestamp %lld.%.9ld,"
-			"source %d,"
-			"assert %ld.%09ld, sequence: %ld,"
-			"clear  %ld.%09ld, sequence: %ld\n",
-			(long long)ts.tv_sec, 
-			ts.tv_nsec,
-			i,
-			infobuf.assert_timestamp.tv_sec,
-			infobuf.assert_timestamp.tv_nsec,
-			infobuf.assert_sequence,
-			infobuf.clear_timestamp.tv_sec,
-			infobuf.clear_timestamp.tv_nsec, infobuf.clear_sequence);
+	printf(	"%lld.%.9ld,"
+		"%ld.%09ld",
+		(long long)ts.tv_sec, 
+		ts.tv_nsec,
+		infobuf.assert_timestamp.tv_sec,
+		infobuf.assert_timestamp.tv_nsec);
 	fflush(stdout);
 
 	return 0;
