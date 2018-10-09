@@ -85,7 +85,6 @@ int find_source(char *path, pps_handle_t *handle, int *avail_mode)
 
 int fetch_source(int i, pps_handle_t *handle, int *avail_mode)
 {
-	struct timespec ts;
 	struct timespec timeout;
 	pps_info_t infobuf;
 	int ret;
@@ -112,13 +111,8 @@ retry:
 		fprintf(stderr, "time_pps_fetch() error %d (%m)\n", ret);
 		return -1;
 	}
-
-	clock_gettime(CLOCK_REALTIME, &ts);
 	
-	printf(	"%lld.%.9ld,"
-		"%ld.%09ld\n",
-		(long long)ts.tv_sec, 
-		ts.tv_nsec,
+	printf(	"%ld.%09ld\n",
 		infobuf.assert_timestamp.tv_sec,
 		infobuf.assert_timestamp.tv_nsec);
 	fflush(stdout);
